@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+} from 'react-router-dom';
+import PokemonsList from './containers/pokemonList';
+import Message from './containers/infoMessages';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="header-Nav">
+        <div className="flex-start">
+          <Link className="clear-link" to="/">
+           <center> <h1 className="self-center color-black">Search Result Page with Redux Concepts using PokeAPI</h1></center>
+          </Link>
+        </div>
+        <Message />
+      </div>
+      <div>
+        <Switch>
+          <Route exact path="/pokemon/:number">
+          </Route>
+          <Route exact path="/">
+            <PokemonsList />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
